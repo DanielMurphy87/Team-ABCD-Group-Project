@@ -11,11 +11,19 @@
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["/*"],
+      "@components/*": ["/components/*"],
+      "@pages/*": ["/pages/*"],
+      "@styles/*": ["/styles/*"],
+      "@utils/*": ["/utils/*"]
+    },
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": [".eslintrc.cjs", "src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
