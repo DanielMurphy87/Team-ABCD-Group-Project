@@ -1,3 +1,6 @@
+<!-- eslint-disable -->
+<!-- eslint-disable-next-line eslint-config-prettier -->
+
 # What's For Dinner - A recipe manager
 
 ## What is it? (Description)

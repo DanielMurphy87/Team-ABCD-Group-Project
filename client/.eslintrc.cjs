@@ -20,6 +20,14 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
+  ignorePatterns: [
+    'node_modules',
+    'build',
+    'dist',
+    'coverage',
+    'public',
+    'README.md',
+  ],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [
