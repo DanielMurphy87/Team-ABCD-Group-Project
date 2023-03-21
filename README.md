@@ -24,6 +24,8 @@ This is a Typescipt React Application, bootstrapped with [Vite](https://vitejs.d
 
 To run the application, you need to have [Node.js](https://nodejs.org/en/) installed on your machine.
 
+Also you need to have [Git](https://git-scm.com/) installed on your machine.
+
 First, clone the repository to your local machine:
 
 ```bash
@@ -40,6 +42,26 @@ Finally, run the application:
 
 ```bash
 npm run dev
+```
+
+Install sass globally:
+
+```bash
+npm install -g sass
+```
+
+for mac users:
+
+```bash
+sudo npm install -g sass
+```
+
+or
+
+homebrew:
+
+```bash
+brew install sass/sass/sass
 ```
 
 ## Contributing
