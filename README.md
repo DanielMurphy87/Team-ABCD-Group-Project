@@ -62,16 +62,17 @@ Contributions are always welcome!. Go through the following steps to contribute 
 
 For better work flow, please make sure you are in the correct branch before pushing. To check the current branch, run the following command:
 
-        ```bash
-        git branch
-        ```
-        Example: `git branch`
+```bash
+git branch
+```
 
-    ```bash
-    git push origin <branch-name>
-    ```
-    Example: `git push origin add-new-recipe`\
-    Note: Make sure you are in the correct branch before pushing.
+To push your changes, run the following command:
+
+```bash
+git push origin <branch-name>
+```
+
+Example: `git push origin add-new-recipe`
 
 - Create a pull request to the main branch (Step 4): (Step 4)
 
