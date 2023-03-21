@@ -1,0 +1,34 @@
+$font-sizes: (
+  'header-1': 3.25rem,
+  'header-2': 2.3rem,
+  'header-3': 2rem,
+  'header-4': 1.15rem,
+  'header-5': 1.05rem,
+);
+
+$font-weight: (
+  'regular': 400,
+  'medium': 500,
+  'thick': 600,
+  'bold': 700,
+  'bolder': 900,
+);
+
+$line-height: (
+  'header-1': 3.5rem,
+  'header-2': 2.5rem,
+  'header-3': 2.25rem,
+  'header-4': 1.25rem,
+  'header-5': 1.15rem,
+);
+
+$font-family: (
+  'primary': 'Roboto, sans-serif',
+  'secondary': 'Roboto, sans-serif',
+);
+
+$colors: (
+  'primary': blue,
+  'secondary': red,
+  'tertiary': green,
+);
