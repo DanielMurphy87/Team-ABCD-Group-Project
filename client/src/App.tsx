@@ -1,10 +1,10 @@
 import './App.css';
+import RouterConfig from './navigation/RouterConfig';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="title">What&apos;s for dinner?</h1>
-      ``
+    <div className="App"> 
+      <RouterConfig />
     </div>
   );
 }
