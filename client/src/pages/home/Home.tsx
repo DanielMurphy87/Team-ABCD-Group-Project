@@ -5,7 +5,8 @@ type HomeProps = {
 const Home: React.FC<HomeProps> = ({ message }) => {
   return (
     <div className="home">
-      <h1 className="title">What&apos;s for dinner? {`${message}!`}</h1>
+      <h1 className="title">What&apos;s for dinner?</h1>
+      <h2>{`${message}!`}</h2>
     </div>
   );
 };

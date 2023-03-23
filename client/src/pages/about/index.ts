@@ -1,3 +1,3 @@
-import Search from '../search/Search';
+import About from './About';
 
-export default Search;
+export default About;
