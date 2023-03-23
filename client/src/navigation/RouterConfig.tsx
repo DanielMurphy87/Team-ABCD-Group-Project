@@ -10,17 +10,19 @@ import { HOME_ROUTE, SEARCH_ROUTE, BASE_ROUTE, ABOUT_ROUTE } from './pathConstan
 
 const Search = React.lazy(() => import('pages/search'));
 
-const RouterConfig: React.FC = () =>    
+const RouterConfig: React.FC = () =>
+<Suspense fallback={<div>Loading...</div>}>  
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home message="Steak" />} />
-        <Route path='search' element={<Search />} />
+          <Route path='search' element={<Search />} />
         <Route path='about' element={<About />} /> 
         <Route path='*' element={<NotFound/>} />
       </Route>
     </Routes>
   </BrowserRouter>
+</Suspense>
 
 
 export default RouterConfig;

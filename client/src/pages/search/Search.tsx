@@ -1,5 +1,5 @@
 import SearchFlexContainer, {
-  SeachItem,
+  SearchItem,
 } from './components/SearchFlexContainer';
 import './search.scss';
 
@@ -8,7 +8,7 @@ const Search = () => {
     <div className="searchPage">
       <SearchFlexContainer>
         {[...Array(10)].map((_, i) => (
-          <SeachItem key={i} />
+          <SearchItem key={i} />
         ))}
       </SearchFlexContainer>
     </div>

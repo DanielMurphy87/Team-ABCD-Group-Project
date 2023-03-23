@@ -1,4 +1,4 @@
-import Nav from '../../navigation/Nav';
+import Nav from '../navigation/Nav';
 
 const Header: React.FC = () =>
 <>
