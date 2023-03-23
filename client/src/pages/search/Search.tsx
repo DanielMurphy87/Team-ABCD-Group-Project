@@ -1,7 +1,16 @@
+import SearchFlexContainer, {
+  SeachItem,
+} from './components/SearchFlexContainer';
+import './search.scss';
+
 const Search = () => {
   return (
-    <div>
-      <h1>Search</h1>
+    <div className="searchPage">
+      <SearchFlexContainer>
+        {[...Array(10)].map((_, i) => (
+          <SeachItem key={i} />
+        ))}
+      </SearchFlexContainer>
     </div>
   );
 };
