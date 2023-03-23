@@ -1,8 +1,8 @@
 import React from 'react';
-import Home from '../pages/home';
-import Search from '../pages/search';
+import Home from '../pages/home';/* 
+import Search from '../pages/search'; */
 import About from '../pages/about';
-import Layout from '../@/layout';
+import Layout from '../layout';
 import NotFound from '../pages/errors/NotFound';
 import { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Search = React.lazy(() => import('pages/search'));
 const RouterConfig: React.FC = () =>    
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<MainLayout />}>
+      <Route path='/' element={<Layout />}>
         <Route index element={<Home message="Steak" />} />
         <Route path='search' element={<Search />} />
         <Route path='about' element={<About />} /> 
