@@ -8,6 +8,6 @@
   @return map-get($font-weight, $weight);
 }
 
-@function color($color-name, $tone: base) {
-  @return map-get(map-get($colors, $color-name), $tone);
+@function color($color-name) {
+  @return map-get($colors, $color-name);
 }

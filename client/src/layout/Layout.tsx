@@ -2,13 +2,14 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-const MainLayout:React.FC = () =>
-<>
-    <Header/>
+const Layout: React.FC = () => (
+  <>
+    <Header />
     <main>
-        <Outlet />
+      <Outlet />
     </main>
     <Footer />
-</>;
+  </>
+);
 
-export default MainLayout;
+export default Layout;
