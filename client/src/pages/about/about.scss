@@ -1,3 +1,22 @@
 // @use '../../../styles/variables' as *;
 // @use '../../../styles/mixins' as *;
 // @use '../../../styles/functions' as *;
+
+.about {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.about__paragraph {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  background-color:  #fffbe9;
+}
+.about__paragraph:hover,
+.about__paragraph__1:hover,
+.about__paragraph__2:hover,
+.about__paragraph__3:hover {
+  background-color: #dae2b6;
+}
