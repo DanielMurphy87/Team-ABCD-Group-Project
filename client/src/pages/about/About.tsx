@@ -13,7 +13,7 @@ const About: React.FC = () => (
         ultimate solution to all these meal-planning and cooking dilemmas!
       </p>
 
-      <p className="about__paragraph">
+      <p className="about__paragraph about__paragraph__1">
         {' '}
         What's for Dinner is a user-friendly app designed to make meal planning
         easy and stress-free. With our app, you can choose from a variety of
@@ -22,7 +22,7 @@ const About: React.FC = () => (
         for Dinner - to make meal planning simple and enjoyable.
       </p>
 
-      <p className="about__paragraph">
+      <p className="about__paragraph about__paragraph__2">
         Our app was developed by the great developement team <strong>ABCD</strong>.We are
         responsible for creating and maintaining the app, ensuring that it is
         up-to-date and functioning properly. We work hard to ensure that the app
@@ -31,7 +31,7 @@ const About: React.FC = () => (
         run out of meal ideas.
       </p>
 
-      <p className="about__paragraph">
+      <p className="about__paragraph about__paragraph__3">
         {' '}
         In addition, we are always open to feedback and suggestions from our
         users.And over the past two years we crossed 1 million users. If you
