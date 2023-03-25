@@ -1,6 +1,5 @@
 import React from 'react';
 import Home from '../pages/home';
-/* import Search from '../pages/search';  */
 import About from '../pages/about';
 import Layout from '../layout';
 import NotFound from '../pages/errors/NotFound';
@@ -11,7 +10,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Error from '@/pages/errors/Error';
 
 const Search = React.lazy(() => import('pages/search'));
-/* const About=React.lazy(()=>import('pages/about')); */
 
 const RouterConfig: React.FC = () =>
   <ErrorBoundary fallback={<Error message='Something went Wrong!' />}>

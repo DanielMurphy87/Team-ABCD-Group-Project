@@ -4,7 +4,6 @@
 
 .footer{
     background-color: color(primary);
-    font-family: 'Roboto, sans-serif';
     color: darkslategray;
     height: 10%;
 }
@@ -13,4 +12,6 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
+    font-family: 'Roboto, sans-serif';
+    font-weight: bold;
 }
