@@ -1,7 +1,8 @@
 import './about.scss';
 
 const About: React.FC = () => (
-  <div className='page'>
+ /*  <div className='page'> */
+  <div>
 
     <div className="about">
       
