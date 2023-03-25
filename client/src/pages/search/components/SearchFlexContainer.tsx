@@ -7,7 +7,7 @@ type SearchContainerProps = {
 };
 type SearchItemProps = {};
 
-export const SeachItem: React.FC<SearchItemProps> = () => {
+export const SearchItem: React.FC<SearchItemProps> = () => {
   return (
     <div className="searchItem">
       <div className="searchItem__imageContainer">
