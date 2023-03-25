@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useId } from 'react';
 import './searchFlexContainer.scss';
 import foodImage from '../../../assets/food.jpg';
+import useModal from '@/components/modal/useModal';
+import Modal from '@/components/modal/Modal';
+import { createPortal } from 'react-dom';
+import ModalCard from './ModalCard';
 
 type SearchContainerProps = {
   children: React.ReactNode;
@@ -8,6 +12,13 @@ type SearchContainerProps = {
 type SearchItemProps = {};
 
 export const SearchItem: React.FC<SearchItemProps> = () => {
+  const ModalRef = React.useRef<HTMLDivElement>(null);
+  const OpenDialogId = useId();
+  const { isModalOpen, OpenModalHandler, CloseModalHandler } = useModal({
+    ModalRef,
+    OpenDialogButtonId: OpenDialogId,
+  });
+
   return (
     <div className="searchItem">
       <div className="searchItem__imageContainer">
@@ -30,9 +41,30 @@ export const SearchItem: React.FC<SearchItemProps> = () => {
         </div>
         <hr className="searchItem__divider" />
         <div className="searchItem__actions">
-          <button className="searchItem__showMore">Action</button>
-          <button className="searchItem__save">Action</button>
+          <button
+            id={OpenDialogId}
+            aria-label="open modal"
+            onClick={OpenModalHandler}
+            className="searchItem__showMore"
+          >
+            Show More
+          </button>
+          <button className="searchItem__save">Save</button>
         </div>
+        {isModalOpen &&
+          createPortal(
+            <Modal
+              ref={ModalRef}
+              isModalOpen={isModalOpen}
+              closeModal={CloseModalHandler}
+            >
+              <ModalCard
+                CloseModalHandler={CloseModalHandler}
+                foodImage={foodImage}
+              />
+            </Modal>,
+            document.body
+          )}
       </div>
     </div>
   );
