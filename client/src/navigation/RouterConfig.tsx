@@ -11,6 +11,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Error from '@/pages/errors/Error';
 
 const Search = React.lazy(() => import('pages/search'));
+const About=React.lazy(()=>import('pages/about'));
 
 const RouterConfig: React.FC = () =>
   <ErrorBoundary fallback={<Error message='Something went Wrong!' />}>
@@ -27,6 +28,5 @@ const RouterConfig: React.FC = () =>
       </BrowserRouter>
     </Suspense>
   </ErrorBoundary>
-
 
 export default RouterConfig;
