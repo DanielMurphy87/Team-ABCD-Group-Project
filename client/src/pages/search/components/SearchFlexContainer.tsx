@@ -11,9 +11,6 @@ type SearchContainerProps = {
 };
 type SearchItemProps = {};
 
-<<<<<<< HEAD
-export const SearchItem: React.FC<SearchItemProps> = () => {
-=======
 export const SeachItem: React.FC<SearchItemProps> = () => {
   const ModalRef = React.useRef<HTMLDivElement>(null);
   const OpenDialogId = useId();
@@ -22,7 +19,6 @@ export const SeachItem: React.FC<SearchItemProps> = () => {
     OpenDialogButtonId: OpenDialogId,
   });
 
->>>>>>> searchPageDesign
   return (
     <div className="searchItem">
       <div className="searchItem__imageContainer">
