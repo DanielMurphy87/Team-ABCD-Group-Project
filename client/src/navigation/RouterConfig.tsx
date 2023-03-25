@@ -1,7 +1,5 @@
 import React from 'react';
-import Home from '../pages/home';/* 
-import Search from '../pages/search'; */
-import About from '../pages/about';
+import Home from '../pages/home';
 import Layout from '../layout';
 import NotFound from '../pages/errors/NotFound';
 import { Suspense } from 'react';
@@ -11,22 +9,26 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Error from '@/pages/errors/Error';
 
 const Search = React.lazy(() => import('pages/search'));
-const About=React.lazy(()=>import('pages/about'));
+const About = React.lazy(() => import('pages/about'));
 
-const RouterConfig: React.FC = () =>
-  <ErrorBoundary fallback={<Error message='Something went Wrong!' />}>
-    <Suspense fallback={<Error message='Loading...' />}>
+const RouterConfig: React.FC = () => (
+  <ErrorBoundary fallback={<Error message="Something went Wrong!" />}>
+    <Suspense fallback={<Error message="Loading..." />}>
       <BrowserRouter>
         <Routes>
           <Route path={BASE_ROUTE} element={<Layout />}>
             <Route index element={<Home message="Steak" />} />
             <Route path={SEARCH_ROUTE} element={<Search />} />
             <Route path={ABOUT_ROUTE} element={<About />} />
-            <Route path='*' element={<Error message='404 File not found! (on this site)' />} />
+            <Route
+              path="*"
+              element={<Error message="404 File not found! (on this site)" />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
     </Suspense>
   </ErrorBoundary>
+);
 
 export default RouterConfig;

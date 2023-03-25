@@ -1,3 +1,5 @@
+import './home.scss';
+
 type HomeProps = {
   message: string;
 };

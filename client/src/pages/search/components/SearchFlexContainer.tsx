@@ -11,7 +11,7 @@ type SearchContainerProps = {
 };
 type SearchItemProps = {};
 
-export const SeachItem: React.FC<SearchItemProps> = () => {
+export const SearchItem: React.FC<SearchItemProps> = () => {
   const ModalRef = React.useRef<HTMLDivElement>(null);
   const OpenDialogId = useId();
   const { isModalOpen, OpenModalHandler, CloseModalHandler } = useModal({
