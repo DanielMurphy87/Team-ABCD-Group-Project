@@ -10,4 +10,4 @@ const Error: React.FC<errorProps> = ({message}) => {
     );
   };
   
-  export default Error;
+export default Error;

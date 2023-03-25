@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import type { DataType } from "utils/types";
+import type { DataType } from "../utils/types";
 
 const SearchBar: React.FC<{ searchData: DataType[] }> = ({
     searchData,
