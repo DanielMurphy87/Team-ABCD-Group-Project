@@ -1,0 +1,16 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/functions' as *;
+
+.footer{
+    background-color: color(primary);
+    font-family: 'Roboto, sans-serif';
+    color: darkslategray;
+    height: 10%;
+}
+
+.footerUlFlex{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}

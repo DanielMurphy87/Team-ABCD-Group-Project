@@ -1,0 +1,9 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/functions' as *;
+
+.NavUlFlex{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
