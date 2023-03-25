@@ -1,0 +1,9 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/functions' as *;
+
+.header{
+    background-color: color(primary);
+    color: darkslategray;
+    height: 10%;
+}
