@@ -4,7 +4,8 @@ import './header.scss'
 const Header: React.FC = () =>
 <>
     <header className="header">
-        <Nav />
+        <Nav currentURL={window.location.pathname}
+            paths={["home","search","about","health"]}/>
     </header>
 </>
 
