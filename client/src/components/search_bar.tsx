@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import type { DataType } from "utils/types";
+import type { MealResult } from "@/definitions/types";
 
-const SearchBar: React.FC<{ searchData: DataType[] }> = ({
+const SearchBar: React.FC<{ searchData: MealResult[] }> = ({
     searchData,
 }): JSX.Element => {
-    const [filteredData, setFilteredData] = useState<DataType[]>([])
+    const [filteredData, setFilteredData] = useState<MealResult[]>([])
     const [wordEntered, setWordEntered] = useState<string>("")
 
     const inputRef: React.RefObject<HTMLInputElement> =
@@ -17,8 +17,8 @@ const SearchBar: React.FC<{ searchData: DataType[] }> = ({
         const searchWord: string = target.value.toLowerCase()
         setWordEntered(searchWord)
 
-        const newFilter: DataType[] = searchData.filter(({ strIngredient }): boolean =>
-        strIngredient.toLowerCase().includes(searchWord)
+        const newFilter: MealResult[] = searchData.filter(({ strMeal }): boolean =>
+        strMeal.toLowerCase().includes(searchWord)
         )
 
         if (!searchWord) return setFilteredData([])
@@ -49,14 +49,14 @@ const SearchBar: React.FC<{ searchData: DataType[] }> = ({
             </div>
             {filteredData.length !== 0 && (
                 <div>
-                    {filteredData.map(({ idIngredient, strIngredient }, key) => (
+                    {filteredData.map(({ idMeal, strMeal }, key) => (
                         <a
-                            href={idIngredient.toString()}
-                            key={key}
+                            href={strMeal.toString()}
+                            key={idMeal}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            {strIngredient}
+                            {strMeal}
                         </a>
                     ))}
                 </div>
