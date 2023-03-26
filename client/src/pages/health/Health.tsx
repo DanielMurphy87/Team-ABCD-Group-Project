@@ -8,7 +8,6 @@ const Health: React.FC = () => {
 
     const { data: mealdbstatus, error, isFetching, status } = useFetchData<MealResultList>(
         `${FOOD_API_BASE_URL}/filter.php?i=beef`
-        // `${FOOD_API_BASE_URL}/list.php?i=list`
     );
     const cocktaildbstatus = useFetchData(
         `${DRINKS_API_BASE_URL}/filter.php?i=beer`
