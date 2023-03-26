@@ -7,7 +7,7 @@ type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ message }) => {
   return (
-    <div className="home">
+    <div className="home home_details">
       <h1 className="home__title">What&apos;s for dinner?</h1>
       <h2 className='home__subtitle'>{`${message}!`}</h2>
       <SearchBar searchData={[]} />
