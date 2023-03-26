@@ -1,11 +1,12 @@
 import React from 'react';
 import Home from '../pages/home';
 import About from '../pages/about';
+import Health from '../pages/health';
 import Layout from '../layout';
 import NotFound from '../pages/errors/NotFound';
 import { Suspense, useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate, useNavigate, Await } from 'react-router-dom';
-import { SEARCH_ROUTE, BASE_ROUTE, ABOUT_ROUTE, ERROR_ROUTE } from './pathConstant';
+import { SEARCH_ROUTE, BASE_ROUTE, ABOUT_ROUTE, ERROR_ROUTE, HEALTH_ROUTE } from './pathConstant';
 import { ErrorBoundary } from 'react-error-boundary';
 import Error from '@/pages/errors/Error';
 import Loading from '@/pages/errors/Loading';
@@ -30,6 +31,7 @@ const RouterConfig: React.FC = () => {
               <Route path={ABOUT_ROUTE} element={<About />} />
               <Route path={ERROR_ROUTE} element={<Error message={errorMessage} />} />
               <Route path={BASE_ROUTE+'loading'} element={<Loading />} />
+              <Route path={HEALTH_ROUTE} element={<Health />} />
               <Route
                 path="*"
                 element={<Error message="404 File not found! (on this site)" />}
