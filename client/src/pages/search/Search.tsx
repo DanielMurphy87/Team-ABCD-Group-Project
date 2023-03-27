@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
+import SearchInput from '@/components/Input/SearchInput';
 
 const Search = () => {
   const location = useLocation();
@@ -42,14 +43,7 @@ const Search = () => {
     <div className="searchPage container">
       <div className="searchPage__header">
         <h1 className="searchPage__title">10 Results</h1>
-        <div className="searchPage__searchBar">
-          <input
-            className="searchPage__searchInput"
-            type="text"
-            placeholder="Search for a recipe"
-          />
-          <button className="searchPage__searchButton">Search</button>
-        </div>
+        <SearchInput />
       </div>
 
       <SearchFlexContainer>
