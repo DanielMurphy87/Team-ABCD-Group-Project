@@ -11,11 +11,18 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    font-family: $font-family;
 
     .health__title {
         font-size: font-size('header-1');
         font-weight: font-weight('bold');
-        color: color('primary');
+        text-shadow: 2px 2px 2px #aaa;
+        color: color('secondary');
+        background-color: color('primary');
+        border-radius: 4px;
+        box-shadow: 0 2px 8px color('secondary');
+        margin: 16px;
+        padding: 16px;
     }
 
     .health__subtitle {
