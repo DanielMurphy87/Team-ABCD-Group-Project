@@ -38,8 +38,8 @@ const Home: React.FC<HomeProps> = ({ message }) => {
 
 
   return (
-    <div>
-      <br />
+    <div className="home home_details">
+      <h1 className="home_title">What&apos;s for dinner?</h1>
       <SearchInput />
       {randomRecipe ? (
         <div>
