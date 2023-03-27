@@ -8,7 +8,7 @@ import * as path from 'path';
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom'
+    environment: 'jsdom',
   },
   resolve: {
     alias: {

@@ -6,7 +6,12 @@ import Layout from '../layout';
 import NotFound from '../pages/errors/NotFound';
 import { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { SEARCH_ROUTE, BASE_ROUTE, ABOUT_ROUTE, HEALTH_ROUTE } from './pathConstant';
+import {
+  SEARCH_ROUTE,
+  BASE_ROUTE,
+  ABOUT_ROUTE,
+  HEALTH_ROUTE,
+} from './pathConstant';
 import { ErrorBoundary } from 'react-error-boundary';
 import Error from '@/pages/errors/Error';
 
@@ -20,6 +25,7 @@ const RouterConfig: React.FC = () => (
           <Route path={BASE_ROUTE} element={<Layout />}>
             <Route index element={<Home message="Steak" />} />
             <Route path={SEARCH_ROUTE} element={<Search />} />
+            <Route path={`${SEARCH_ROUTE}/:searchTerm`} element={<Search />} />
             <Route path={ABOUT_ROUTE} element={<About />} />
             <Route path={HEALTH_ROUTE} element={<Health />} />
             <Route
