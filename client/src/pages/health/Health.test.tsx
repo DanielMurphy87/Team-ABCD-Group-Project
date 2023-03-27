@@ -1,24 +1,31 @@
-import { assert, expect, test } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render } from '@testing-library/react';
+import * as customMatchers from '@testing-library/jest-dom/matchers';
+import { beforeAll, afterAll, test, expect } from 'vitest';
+import { setupServer } from 'msw/node';
+import { rest } from 'msw';
 import Health from './Health';
-import { useFetchData } from '@/hooks/use_fetch_data';
+import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 
-// Edit an assertion and save to see HMR in action
+expect.extend(customMatchers);
 
-test('Math.sqrt()', () => {
-    expect(Math.sqrt(4)).toBe(2)
-    expect(Math.sqrt(144)).toBe(12)
-    expect(Math.sqrt(2)).toBe(Math.SQRT2)
-})
+const server = setupServer(
+    rest.get(`${FOOD_API_BASE_URL}/filter.php`, (req, res, ctx) => {
+        return res(ctx.json({ meals: [] }));
+    }),
+    rest.get(`${DRINKS_API_BASE_URL}/filter.php`, (req, res, ctx) => {
+        return res(ctx.json({ drinks: [] }));
+    })
+);
 
-test('JSON', () => {
-    const input = {
-        foo: 'hello',
-        bar: 'world',
-    }
+beforeAll(() => server.listen());
+afterAll(() => {
+    server.resetHandlers();
+    server.close();
+});
 
-    const output = JSON.stringify(input)
-
-    expect(output).eq('{"foo":"hello","bar":"world"}')
-    assert.deepEqual(JSON.parse(output), input, 'matches original')
-})
+test('renders without crashing', () => {
+    const { getByText } = render(<Health />);
+    expect(getByText(/The MealDB is:/)).toBeInTheDocument();
+    expect(getByText(/The CocktailDB is:/)).toBeInTheDocument();
+});

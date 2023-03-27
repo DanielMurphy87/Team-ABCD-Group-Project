@@ -1,0 +1,109 @@
+@use '../../styles/helperClass' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/functions' as *;
+
+.searchBar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &__inputContainer {
+    width: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    width: 100%;
+    height: 3rem;
+    border: 1px solid color('primary');
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: font-size('header-4');
+    font-weight: font-weight('bold');
+    color: color('primary');
+    background-color: color('secondary');
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border: 1px solid color('primary');
+      background-color: color('secondary');
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    z-index: 2;
+    background-color: color('primary');
+    border: none;
+
+    &:hover {
+      background-color: color('secondary');
+    }
+
+    &:active {
+      background-color: color('primary');
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: color('secondary');
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      fill: color('secondary');
+    }
+
+    &:active {
+      fill: color('primary');
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__type {
+    width: 1.5rem;
+    height: 3rem;
+    border: 1px solid color('primary');
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: font-size('header-4');
+    font-weight: font-weight('bold');
+    color: color('primary');
+    background-color: color('secondary');
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border: 1px solid color('primary');
+      background-color: color('secondary');
+    }
+  }
+}
