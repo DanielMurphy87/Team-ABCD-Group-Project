@@ -1,3 +1,4 @@
+import './error.scss';
 
 interface errorProps {
     message:string;
@@ -5,8 +6,8 @@ interface errorProps {
 
 const Error: React.FC<errorProps> = ({message}) => {
     return (
-      <div className='container'>
-        <h1>{message}</h1>
+      <div className='container error error_details'>
+        <h1 className='error_title'>{message}</h1>
       </div>
     );
   };

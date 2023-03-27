@@ -4,29 +4,35 @@ import './nav.scss';
 
 const paths: Array<string> = [HOME_ROUTE, SEARCH_ROUTE, ABOUT_ROUTE, HEALTH_ROUTE]
 
+const upperCaseInitial = (word: string) => word[0].toLocaleUpperCase() + word.substring(1)
+
+
 const Nav: React.FC = () => {
 
     const { pathname } = useLocation();
 
-    const links: Array<React.ReactNode> = paths.map((path) => {
-        const routeName = (( path==="home" ) ? "" : path);
-        const displayName = path[0].toLocaleUpperCase()+path.substring(1);
-        return (
-           <li><NavLink to={BASE_ROUTE+routeName}>{displayName}</NavLink></li>
-        )});
+    const links: Array<React.ReactNode> = paths.reduce((linkList: Array<React.ReactNode>, path) => {
+        const routeName = ((path === "home") ? "" : path);
+        const displayName = upperCaseInitial(path);
+        if (pathname.substring(1) !== routeName) {
+            linkList.push(
+                <>
+                    <li>
+                        <NavLink to={BASE_ROUTE + routeName}>{displayName}</NavLink>
+                    </li>
+                </>);
+        }
+        return linkList;
+    }, []);
 
-return(
-    <>
-        <nav>
-            <ul className="NavUlFlex">
-                {...links}
-                {/*<li><NavLink to={BASE_ROUTE}>Home</NavLink></li>
-                <li><NavLink to={BASE_ROUTE+SEARCH_ROUTE}>Search</NavLink></li>
-                <li><NavLink to={BASE_ROUTE+ABOUT_ROUTE}>About</NavLink></li>
-                <li><NavLink to={BASE_ROUTE+HEALTH_ROUTE}>Health</NavLink></li>*/}
-            </ul>
-        </nav>
-    </>
-)
+    return (
+        <>
+            <nav>
+                <ul className="NavUlFlex">
+                    {...links}
+                </ul>
+            </nav>
+        </>
+    )
 }
 export default Nav;

@@ -1,7 +1,9 @@
+import './error.scss';
+
 const Loading = () => {
     return (
-      <div className="container">
-        <h1>Loading...</h1>
+      <div className="container error error.details">
+        <h1 className="error.title">Loading...</h1>
       </div>
     );
   };
