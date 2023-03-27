@@ -6,9 +6,9 @@ type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ message }) => {
   return (
-    <div className="home">
-      <h1 className="title">What&apos;s for dinner?</h1>
-      <h2>{`${message}!`}</h2>
+    <div className="home home_details">
+      <h1 className="home_title">What&apos;s for dinner?</h1>
+      <h2 className="home_subtitle">{`${message}!`}</h2>
       <SearchInput />
     </div>
   );

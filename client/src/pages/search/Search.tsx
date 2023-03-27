@@ -9,7 +9,7 @@ import SearchInput from '@/components/Input/SearchInput';
 
 const Search = () => {
   const location = useLocation();
-  let searchTerm = location.pathname.split('/')[2].substring(1);
+  let searchTerm = location.pathname.substring(1);
   let searchType: string = location?.state?.searchType;
 
   let base_url =

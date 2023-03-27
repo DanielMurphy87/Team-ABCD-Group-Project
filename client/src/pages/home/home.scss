@@ -2,9 +2,6 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 @use '../../styles/functions' as *;
-// @use '../../styles/typography' as *;
-
-@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap';
 
 .home {
   height: 100%;
@@ -24,18 +21,10 @@
   &__title {
     font-size: font-size('header-1');
     font-weight: font-weight('bold');
-    // font-family: 'Roboto, san-serif';
-    // color: color('primary');
-    // color: lightgray;
-    // font-family: Arial, Helvetica, sans-serif;
   }
   
   &__subtitle {
     font-size: font-size('header-2');
     font-weight: font-weight('bold');
-    // color: color('primary');
-    // color: lightgray;
-    text-shadow: 2px 2px darkslategray;
-    // font-family: 'Roboto';
   }
 }
