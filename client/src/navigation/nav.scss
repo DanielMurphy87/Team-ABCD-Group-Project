@@ -8,6 +8,5 @@
     justify-content: space-evenly;
     font-family: $font-family;
 
-    li .inactive { display: none }
-
+    li a.active { display: none }
 }
