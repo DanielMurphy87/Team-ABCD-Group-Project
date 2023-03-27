@@ -72,7 +72,7 @@ export const SearchItem: React.FC<SearchItemProps> = ({
             >
               <ModalCard
                 CloseModalHandler={CloseModalHandler}
-                foodImage={foodImage}
+                foodImage={strMealThumb}
               />
             </Modal>,
             document.body
