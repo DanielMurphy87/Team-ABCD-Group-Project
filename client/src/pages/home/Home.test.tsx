@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react';
-import * as customMatchers from '@testing-library/jest-dom/matchers';
 import { beforeAll, afterAll, test, expect } from 'vitest';
 import Home from './Home';
 
-expect.extend(customMatchers);
+const matchers = require('@testing-library/jest-dom/matchers');
+expect.extend(matchers);
+
 test('renders without crashing', () => {
     const message = 'Test message';
     const { getByText } = render(<Home message={message} />);

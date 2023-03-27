@@ -21,7 +21,7 @@ const Search = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['search'],
     queryFn: () => {
-      return fetch(`${base_url}filter.php?i=${searchTerm}`).then((res) =>
+      return fetch(`${base_url}/filter.php?i=${searchTerm}`).then((res) =>
         res.json()
       );
     },
