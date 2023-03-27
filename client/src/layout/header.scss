@@ -6,4 +6,12 @@
     background-color: color(primary);
     color: darkslategray;
     height: 10%;
+
+    li[inactive] { display: none }
+
+    a { color: darkslategray }
+    a:link  {text-decoration: none}
+    a:visited {text-decoration: none}
+    a:hover  {text-decoration: underline}
+    a:active {text-decoration: none}
 }

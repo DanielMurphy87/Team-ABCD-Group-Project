@@ -11,11 +11,11 @@ interface NavProps {
 const Nav: React.FC<NavProps> = ({ currentURL, paths }) => {
 
     const links: Array<React.ReactNode> = paths.map((path) => {
-        const routeName = (( path==="home" ) ? "" : 
-                    BASE_ROUTE+eval(path.toLocaleUpperCase()+"_ROUTE"));
+        const routeName = (( path==="home" ) ? "" : path);
         const displayName = path[0].toLocaleUpperCase()+path.substring(1);
+        const active = ((currentURL.match('/^.*'+path+'$/')) ? "className='inactive'" : "");
         return (
-           <li><NavLink to={routeName}>{displayName}</NavLink></li>
+           <li ><NavLink className={active} to={BASE_ROUTE+routeName}>{displayName}</NavLink></li>
         )});
 
 return(
@@ -23,10 +23,10 @@ return(
         <nav>
             <ul className="NavUlFlex">
                 {...links}
-                <li><NavLink to={BASE_ROUTE}>Home</NavLink></li>
+                {/*<li><NavLink to={BASE_ROUTE}>Home</NavLink></li>
                 <li><NavLink to={BASE_ROUTE+SEARCH_ROUTE}>Search</NavLink></li>
                 <li><NavLink to={BASE_ROUTE+ABOUT_ROUTE}>About</NavLink></li>
-                <li><NavLink to={BASE_ROUTE+HEALTH_ROUTE}>Health</NavLink></li>
+                <li><NavLink to={BASE_ROUTE+HEALTH_ROUTE}>Health</NavLink></li>*/}
             </ul>
         </nav>
     </>
