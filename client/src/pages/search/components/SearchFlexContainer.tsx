@@ -9,9 +9,17 @@ import ModalCard from './ModalCard';
 type SearchContainerProps = {
   children: React.ReactNode;
 };
-type SearchItemProps = {};
+type SearchItemProps = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
 
-export const SearchItem: React.FC<SearchItemProps> = () => {
+export const SearchItem: React.FC<SearchItemProps> = ({
+  idMeal,
+  strMeal,
+  strMealThumb,
+}) => {
   const ModalRef = React.useRef<HTMLDivElement>(null);
   const OpenDialogId = useId();
   const { isModalOpen, OpenModalHandler, CloseModalHandler } = useModal({
@@ -22,10 +30,14 @@ export const SearchItem: React.FC<SearchItemProps> = () => {
   return (
     <div className="searchItem">
       <div className="searchItem__imageContainer">
-        <img className="searchItem__image" src={foodImage} alt="search item" />
+        <img
+          className="searchItem__image"
+          src={strMealThumb}
+          alt="search item"
+        />
       </div>
       <div className="searchItem__details">
-        <h3 className="searchItem__title">Ewedu Soap</h3>
+        <h3 className="searchItem__title">{strMeal}</h3>
         <p className="searchItem__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quae
           quod, voluptate, quibusdam, voluptates voluptas quidem voluptatum
