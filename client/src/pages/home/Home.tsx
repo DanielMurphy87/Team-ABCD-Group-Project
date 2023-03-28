@@ -3,11 +3,7 @@ import './home.scss';
 import React, { useState, useEffect } from "react";
 import RandomRecipe from '@/components/display/random_recipe';
 
-type HomeProps = {
-  message: string;
-};
-
-const Home: React.FC<HomeProps> = ({ message }) => {
+const Home: React.FC = () => {
   return (
     <div className="home home_details">
       <h1 className="home_title">What&apos;s for dinner?</h1>

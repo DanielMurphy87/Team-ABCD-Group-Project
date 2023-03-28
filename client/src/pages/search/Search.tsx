@@ -6,6 +6,8 @@ import { useQuery } from 'react-query';
 import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import SearchInput from '@/components/Input/SearchInput';
+import ErrorComponent from '../errors/ErrorComponent';
+import Loading from '@/pages/errors/Loading';
 
 const Search = () => {
   const location = useLocation();
@@ -24,17 +26,17 @@ const Search = () => {
       return fetch(`${base_url}/filter.php?i=${searchTerm}`).then((res) =>
         res.json()
       );
-    },
+    }
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   if (error) {
     return (
       <>
-        <div>{`Error: ${error}`}</div>
+        <ErrorComponent message={String(error)} />
       </>
     );
   }
