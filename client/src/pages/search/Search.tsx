@@ -21,7 +21,7 @@ const Search = () => {
   console.log(`${base_url}filter.php?i=${searchTerm}`);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["search"],
+    queryKey: ['search'],
     queryFn: () => {
       return fetch(`${base_url}/filter.php?i=${searchTerm}`).then((res) =>
         res.json()
