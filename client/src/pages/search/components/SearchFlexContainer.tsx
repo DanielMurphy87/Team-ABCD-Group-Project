@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 import ModalCard from './ModalCard';
 import { useNavigate } from 'react-router-dom';
 import Share from '@/components/ShareMenu/Share';
+import { FacebookIcon, FacebookShareButton } from 'react-share';
 
 type SearchContainerProps = {
   children: React.ReactNode;

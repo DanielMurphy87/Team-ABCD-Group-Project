@@ -1,5 +1,6 @@
 import ErrorComponent from '@/components/errors/ErrorComponent';
 import Loading from '@/components/errors/Loading';
+import Share from '@/components/ShareMenu/Share';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
@@ -365,6 +366,10 @@ const SinglePageItem = (props: Props) => {
             </div>
           </>
         )}
+        <Share
+          recipeUrl={`https://whatsfordinner.pages.dev/search/:${type}/:${itemId}`}
+          message="Check out this recipe"
+        />
         <div className="card__spacer"></div>
       </div>
     </div>
