@@ -18,9 +18,6 @@ const Health: React.FC = () => {
             <p className="health__title">
             {' '}
                 The MealDB is: {status === 200 ? '✔️' : '❌'}
-                {/* {mealdbstatus && mealdbstatus.meals.map((meal: Meal) => (
-                    <div key={meal.idMeal}>{meal.strMeal}{meal.idMeal}</div>
-                ))} */}
             </p>
             <h1 className="health__title">
                 The CocktailDB is: {cocktaildbstatus.status === 200 ? '✔️' : '❌'}

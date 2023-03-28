@@ -156,10 +156,9 @@ export type Cocktail = {
     strMeasure13: string | null;
     strMeasure14: string | null;
     strMeasure15: string | null;
-    dateModified?: Date; // Optional property
-  }
-  
-  // Define an interface for the API response
-  interface CocktailResponse {
-      drinks?: Cocktail[]; // Optional property
-  }
+    dateModified?: Date;
+}
+
+interface CocktailResponse {
+    drinks?: Cocktail[];
+}
