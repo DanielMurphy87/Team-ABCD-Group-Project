@@ -11,8 +11,8 @@ import {
   ABOUT_ROUTE,
   HEALTH_ROUTE,
 } from './pathConstant';
-import ErrorComponent from '@/pages/errors/ErrorComponent';
-import Loading from '@/pages/errors/Loading';
+import ErrorComponent from '@/components/errors/ErrorComponent';
+import Loading from '@/components/errors/Loading';
 import ErrorBoundedComponent from './ErrorBoundedComponent';
 
 const Search = React.lazy(() => import('pages/search'));

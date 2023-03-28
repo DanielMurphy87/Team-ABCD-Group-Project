@@ -1,3 +1,5 @@
+import ErrorComponent from '@/components/errors/ErrorComponent';
+import Loading from '@/components/errors/Loading';
 import { DRINKS_API_BASE_URL, FOOD_API_BASE_URL } from '@/config/config';
 import React from 'react';
 import { useQuery } from 'react-query';
@@ -14,18 +16,18 @@ const ModalCard: React.FC<Props> = ({ CloseModalHandler, itemId, type }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['searchWithId', itemId],
     queryFn: () => {
-      return fetch(`${baseUrl}lookup.php?i=${itemId}`).then((res) =>
+      return fetch(`${baseUrl}/lookup.php?i=${itemId}`).then((res) =>
         res.json()
       );
     },
   });
 
   if (isLoading) {
-    return <div className="card">Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div className="card">Error</div>;
+    return <ErrorComponent message="Something went wrong, please try again" />;
   }
 
   return (

@@ -6,7 +6,9 @@ import { useQueries } from 'react-query';
 import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import SearchInput from '@/components/Input/SearchInput';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import ErrorComponent from '@/components/errors/ErrorComponent';
+import Loading from '@/components/errors/Loading';
 
 type showResultType = 'food' | 'drink';
 
@@ -15,13 +17,11 @@ const Search = () => {
   const location = useLocation();
   let searchTerm: string = location.pathname.split('/')[2]?.substring(1) || ' ';
 
-  // const firstUpdate = useRef(true);
-
   const result = useQueries([
     {
       queryKey: ['foodSearch', searchTerm],
       queryFn: () => {
-        return fetch(`${FOOD_API_BASE_URL}filter.php?i=${searchTerm}`).then(
+        return fetch(`${FOOD_API_BASE_URL}/filter.php?i=${searchTerm}`).then(
           (res) => {
             return res.json();
           }
@@ -31,7 +31,7 @@ const Search = () => {
     {
       queryKey: ['drinkSearch', searchTerm],
       queryFn: () => {
-        return fetch(`${DRINKS_API_BASE_URL}filter.php?i=${searchTerm}`).then(
+        return fetch(`${DRINKS_API_BASE_URL}/filter.php?i=${searchTerm}`).then(
           (res) => {
             if (res.status === 200) {
               return res.text().then((text) => {
@@ -59,7 +59,6 @@ const Search = () => {
     data: fooddata,
     isLoading: foodLoading,
     error: foodError,
-    refetch: foodRefetch,
     isRefetching: foodIsRefetching,
   } = result[0];
 
@@ -67,27 +66,20 @@ const Search = () => {
     data: drinkdata,
     isLoading: drinkLoading,
     error: drinkError,
-    refetch: drinkRefetch,
     isRefetching: drinkIsRefetching,
   } = result[1];
 
   if (foodLoading || drinkLoading || foodIsRefetching || drinkIsRefetching) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (foodError || drinkError) {
-    return <div>Error</div>;
+    return (
+      <ErrorComponent
+        message={'Something went wrong, please try again later'}
+      />
+    );
   }
-
-  // useEffect(() => {
-  //   if (firstUpdate.current) {
-  //     firstUpdate.current = false;
-  //     return;
-  //   }
-  //   setSearchTermState(searchTerm);
-  //   foodRefetch();
-  //   drinkRefetch();
-  // }, [searchTerm]);
 
   return (
     <div className="searchPage container">
@@ -114,41 +106,11 @@ const Search = () => {
       </div>
 
       <SearchFlexContainer>
-        {/* {showResult === 'food' ? (
-          fooddata?.meals === null ? (
-            <h1>No meals found</h1>
-          ) : !foodIsRefetching ? (
-            fooddata?.meals.map((meal: any) => (
-              <SearchItem
-                key={meal.idMeal}
-                strMeal={meal.strMeal}
-                strMealThumb={meal.strMealThumb}
-                idMeal={meal.idMeal}
-                type="food"
-              />
-            ))
-          ) : (
-            <h1> relaoding </h1>
-          )
-        ) : drinkdata?.drinks === null ? (
-          <h1>No drinks found</h1>
-        ) : (
-          !drinkIsRefetching &&
-          drinkdata?.drinks.map((drink: any) => (
-            <SearchItem
-              key={drink.idDrink}
-              strMeal={drink.strDrink}
-              strMealThumb={drink.strDrinkThumb}
-              idMeal={drink.idDrink}
-              type="drink"
-            />
-          ))
-        )} */}
         {showResult === 'food' ? (
           fooddata?.meals === null ? (
-            <h1>No meals found</h1>
+            <ErrorComponent message={'No meals found'} />
           ) : foodIsRefetching ? (
-            <h1>Loading...</h1>
+            <Loading />
           ) : (
             fooddata?.meals.map((meal: any) => (
               <SearchItem
@@ -161,9 +123,9 @@ const Search = () => {
             ))
           )
         ) : drinkdata?.drinks === null ? (
-          <h1>No drinks found</h1>
+          <ErrorComponent message={'No drinks found'} />
         ) : drinkIsRefetching ? (
-          <h1>Loading...</h1>
+          <Loading />
         ) : (
           drinkdata?.drinks.map((drink: any) => (
             <SearchItem
