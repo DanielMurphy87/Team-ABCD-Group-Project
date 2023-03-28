@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import SearchInput from '@/components/Input/SearchInput';
+import ErrorComponent from '../errors/ErrorComponent';
 
 const Search = () => {
   const location = useLocation();
@@ -19,12 +20,12 @@ const Search = () => {
   console.log(`${base_url}filter.php?i=${searchTerm}`);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['search'],
+    queryKey: [location.search],
     queryFn: () => {
       return fetch(`${base_url}/filter.php?i=${searchTerm}`).then((res) =>
         res.json()
       );
-    },
+    }
   });
 
   if (isLoading) {
@@ -34,7 +35,8 @@ const Search = () => {
   if (error) {
     return (
       <>
-        <div>{`Error: ${error}`}</div>
+        {/* <div>{`Error: ${error}`}</div> */
+        <ErrorComponent error={Error(String(error))}/>}
       </>
     );
   }

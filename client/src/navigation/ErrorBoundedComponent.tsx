@@ -1,14 +1,17 @@
-import Fragment from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import Error from "@/pages/errors/Error";
+import { ErrorBoundary, withErrorBoundary, ErrorBoundaryProps } from "react-error-boundary";
+import ErrorComponent from "@/pages/errors/ErrorComponent";
 
 interface ebcProps {
     component: React.ReactNode;    
 }
 
-const ErrorBoundedComponent: React.FC<ebcProps> = ({component}) =>
-    <ErrorBoundary fallback={<Error message='Something went wrong' />} >
+const ErrorBoundedComponent: React.FC<ebcProps> = ({component}) => {
+
+    return (
+    <ErrorBoundary fallback={<ErrorComponent error={Error('Something went wrong')} />} >
         {component}
     </ErrorBoundary>
+    )
+}
 
 export default ErrorBoundedComponent;

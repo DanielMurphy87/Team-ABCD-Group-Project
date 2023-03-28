@@ -27,7 +27,7 @@ const SearchInput = ({}: SearchInputProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate(`/search/:${inputValue}`, {
+    navigate(`/search/?i=${inputValue}`, {
       replace: true,
       state: { searchType },
     });
