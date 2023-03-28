@@ -7,6 +7,7 @@ import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import SearchInput from '@/components/Input/SearchInput';
 import ErrorComponent from '../errors/ErrorComponent';
+import Loading from '@/pages/errors/Loading';
 
 const Search = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const Search = () => {
   console.log(`${base_url}filter.php?i=${searchTerm}`);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: [location.search],
+    queryKey: ["search"],
     queryFn: () => {
       return fetch(`${base_url}/filter.php?i=${searchTerm}`).then((res) =>
         res.json()
@@ -29,14 +30,13 @@ const Search = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   if (error) {
     return (
       <>
-        {/* <div>{`Error: ${error}`}</div> */
-        <ErrorComponent error={Error(String(error))}/>}
+        <ErrorComponent message={String(error)} />
       </>
     );
   }
