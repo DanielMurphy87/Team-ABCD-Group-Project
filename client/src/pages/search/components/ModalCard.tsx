@@ -1,5 +1,6 @@
 import ErrorComponent from '@/components/errors/ErrorComponent';
 import Loading from '@/components/errors/Loading';
+import Share from '@/components/ShareMenu/Share';
 import { DRINKS_API_BASE_URL, FOOD_API_BASE_URL } from '@/config/config';
 import React from 'react';
 import { useQuery } from 'react-query';
@@ -370,6 +371,10 @@ const ModalCard: React.FC<Props> = ({ CloseModalHandler, itemId, type }) => {
           </div>
         </>
       )}
+      <Share
+        recipeUrl={`https://whatsfordinner.pages.dev/search/:${type}/:${itemId}`}
+        message="Check out this recipe"
+      />
       <div className="card__spacer"></div>
     </div>
   );
