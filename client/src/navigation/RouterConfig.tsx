@@ -23,8 +23,6 @@ const asyncWrap = (endPoint: React.ReactNode) =>
 
 const RouterConfig: React.FC = () => {
 
-  const [message, setMessage] = useState("Chill! No Errors are known to this System.");
-
   return (
       <BrowserRouter>
         <Routes>
