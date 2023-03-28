@@ -18,7 +18,7 @@ const errorWrap = (endPoint: React.ReactNode) =>
 
 const asyncWrap = (endPoint: React.ReactNode) =>
   <Suspense fallback={<Loading />}>
-    {endPoint}
+    {errorWrap(endPoint)}
   </Suspense>
 
 const RouterConfig: React.FC = () => {
