@@ -1,6 +1,6 @@
 import SearchInput from '@/components/Input/SearchInput';
 import './home.scss';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import RandomRecipe from '@/components/display/random_recipe';
 
 const Home: React.FC = () => {

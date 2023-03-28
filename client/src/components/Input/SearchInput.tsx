@@ -21,11 +21,11 @@ const SearchInput = ({}: SearchInputProps) => {
     setInputValue(event.target.value);
   };
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchType(event.target.value as SearchType);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    event:
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
     navigate(`/search/:${inputValue}`, {
       replace: true,
@@ -45,24 +45,10 @@ const SearchInput = ({}: SearchInputProps) => {
           onChange={handleChange}
           className="searchBar__input"
         />
-        <button type="submit" className="searchBar__button">
+        <button onClick={handleSubmit} className="searchBar__button">
           <BsSearch className="searchBar__icon" />
         </button>
       </div>
-      <select
-        value={searchType}
-        onChange={handleSelectChange}
-        name="searchType"
-        id="searchType"
-        className="SearchBar__type"
-      >
-        <option className="searchBar__option" value="meals">
-          Meals
-        </option>
-        <option className="searchBar__option" value="drinks">
-          Drinks
-        </option>
-      </select>
     </form>
   );
 };

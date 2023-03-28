@@ -5,6 +5,8 @@ import useModal from '@/components/modal/useModal';
 import Modal from '@/components/modal/Modal';
 import { createPortal } from 'react-dom';
 import ModalCard from './ModalCard';
+import { useNavigate } from 'react-router-dom';
+import Share from '@/components/ShareMenu/Share';
 
 type SearchContainerProps = {
   children: React.ReactNode;
@@ -13,12 +15,14 @@ type SearchItemProps = {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
+  type: string;
 };
 
 export const SearchItem: React.FC<SearchItemProps> = ({
   idMeal,
   strMeal,
   strMealThumb,
+  type,
 }) => {
   const ModalRef = React.useRef<HTMLDivElement>(null);
   const OpenDialogId = useId();
@@ -26,6 +30,11 @@ export const SearchItem: React.FC<SearchItemProps> = ({
     ModalRef,
     OpenDialogButtonId: OpenDialogId,
   });
+  const navigate = useNavigate();
+
+  const HandlerDetailView = () => {
+    navigate(`/search/:${type}/:${idMeal}`);
+  };
 
   return (
     <div className="searchItem">
@@ -38,19 +47,6 @@ export const SearchItem: React.FC<SearchItemProps> = ({
       </div>
       <div className="searchItem__details">
         <h3 className="searchItem__title">{strMeal}</h3>
-        <p className="searchItem__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quae
-          quod, voluptate, quibusdam, voluptates voluptas quidem voluptatum
-          doloremque quos quia quas. Quisquam, quae. Quisquam quae quod,
-          voluptate, quibusdam, voluptates voluptas quidem voluptatum doloremque
-          quos quia quas. Quisquam, quae.
-        </p>
-        <hr className="searchItem__divider" />
-        <div className="searchItem__tags">
-          <span className="searchItem__tag">Tag</span>
-          <span className="searchItem__tag">Tag</span>
-          <span className="searchItem__tag">Tag</span>
-        </div>
         <hr className="searchItem__divider" />
         <div className="searchItem__actions">
           <button
@@ -59,10 +55,17 @@ export const SearchItem: React.FC<SearchItemProps> = ({
             onClick={OpenModalHandler}
             className="searchItem__showMore"
           >
-            Show More
+            Quick View
           </button>
-          <button className="searchItem__save">Save</button>
+          <button onClick={HandlerDetailView} className="searchItem__save">
+            Detail View
+          </button>
         </div>
+        <hr className="searchItem__divider" />
+        <Share
+          recipeUrl={`https://whatsfordinner.pages.dev/search/:${type}/:${idMeal}`}
+          message={`Check out this ${type} recipe!`}
+        />
         {isModalOpen &&
           createPortal(
             <Modal
@@ -72,7 +75,8 @@ export const SearchItem: React.FC<SearchItemProps> = ({
             >
               <ModalCard
                 CloseModalHandler={CloseModalHandler}
-                foodImage={strMealThumb}
+                itemId={idMeal}
+                type={type}
               />
             </Modal>,
             document.body
