@@ -5,24 +5,28 @@
 
 .searchFlex {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
   gap: 1rem;
-  margin-top: 1.5rem;
 
   .searchItem {
-    flex: 1 1 100%;
+    flex: 1 100%;
     max-width: 100%;
     min-width: 100%;
-    gap: 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-    max-height: 23rem;
 
-    // @include breakpoint('tablet') {
-    //   flex: 1 1 50%;
-    //   max-width: 50%;
-    //   min-width: 50%;
-    // }
+    display: flex;
+    flex-flow: column nowrap;
+
+    @include breakpoint('tablet') {
+      flex: 1 50%;
+      max-width: 48%;
+      min-width: 48%;
+    }
+
+    @include breakpoint('desktop') {
+      flex: 1 33%;
+      max-width: 31%;
+      min-width: 31%;
+    }
 
     &__imageContainer {
       flex: 2 2 100%;
@@ -31,7 +35,7 @@
       justify-content: center;
       align-items: center;
       background-color: color('tertiary');
-      border-radius: 0.5rem;
+      border-radius: 0.5rem 0.5rem 0 0;
       padding: 1rem;
 
       img {
@@ -49,7 +53,7 @@
       justify-content: center;
       align-items: center;
       background-color: color('secondary');
-      border-radius: 0.5rem;
+      border-radius: 0 0 0.5rem 0.5rem;
       padding: 1rem;
     }
 

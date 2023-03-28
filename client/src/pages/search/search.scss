@@ -1,6 +1,11 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/functions' as *;
+@use '../../styles/helperClass' as *;
+
 .searchPage {
   padding: 1rem;
+  margin: 1rem auto;
   background: rgb(218, 226, 182);
   background: linear-gradient(
     90deg,
@@ -9,4 +14,29 @@
   );
   font-family: $font-family;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__amount {
+    font-size: font-size('header-4');
+    font-weight: font-weight('bold');
+  }
+
+  &__show {
+    font-size: font-size('header-4');
+    font-weight: font-weight('bold');
+    border: none;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
 }

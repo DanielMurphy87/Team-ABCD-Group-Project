@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+@use '../../styles/functions' as *;
+
+.share {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 10rem;
+  min-width: 10rem;
+  padding: 0.5rem;
+  background-color: color('secondary');
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin: 0.5rem;
+}
