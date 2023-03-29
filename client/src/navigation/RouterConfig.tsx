@@ -29,28 +29,32 @@ const asyncWrap = (endPoint: React.ReactNode) => (
 const RouterConfig: React.FC = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path={BASE_ROUTE} element={<Layout />}>
-          <Route index element={errorWrap(<Home />)} />
-          <Route path={SEARCH_ROUTE} element={asyncWrap(<Search />)} />
-          <Route path={ABOUT_ROUTE} element={errorWrap(<About />)} />
-          <Route path={HEALTH_ROUTE} element={errorWrap(<Health />)} />
-          <Route path={SEARCH_ROUTE} element={<Search />} />
-          <Route path={`${SEARCH_ROUTE}/:searchTerm`} element={<Search />} />
-          <Route
-            path={`${SEARCH_ROUTE}/:type/:idMeal`}
-            element={<SinglePageItem />}
-          />
-          <Route path={ABOUT_ROUTE} element={<About />} />
-          <Route path={HEALTH_ROUTE} element={<Health />} />
-          <Route
-            path="*"
-            element={
-              <ErrorComponent message={'404 File not found! (on this site)'} />
-            }
-          />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path={BASE_ROUTE} element={<Layout />}>
+            <Route index element={errorWrap(<Home />)} />
+            <Route path={SEARCH_ROUTE} element={asyncWrap(<Search />)} />
+            <Route path={ABOUT_ROUTE} element={errorWrap(<About />)} />
+            <Route path={HEALTH_ROUTE} element={errorWrap(<Health />)} />
+            <Route path={SEARCH_ROUTE} element={<Search />} />
+            <Route path={`${SEARCH_ROUTE}/:searchTerm`} element={<Search />} />
+            <Route
+              path={`${SEARCH_ROUTE}/:type/:idMeal`}
+              element={<SinglePageItem />}
+            />
+            <Route path={ABOUT_ROUTE} element={<About />} />
+            <Route path={HEALTH_ROUTE} element={<Health />} />
+            <Route
+              path="*"
+              element={
+                <ErrorComponent
+                  message={'404 File not found! (on this site)'}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
