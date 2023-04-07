@@ -13,7 +13,9 @@ import {
 } from './pathConstant';
 import ErrorComponent from '@/components/errors/ErrorComponent';
 import Loading from '@/components/errors/Loading';
+import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundedComponent from './ErrorBoundedComponent';
+import {FallbackRender} from './ErrorBoundedComponent';
 
 const Search = React.lazy(() => import('pages/search'));
 const SinglePageItem = React.lazy(() => import('pages/singlePageItem'));
@@ -29,6 +31,7 @@ const asyncWrap = (endPoint: React.ReactNode) => (
 const RouterConfig: React.FC = () => {
   return (
     <BrowserRouter>
+    <ErrorBoundary fallbackRender={FallbackRender}>
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path={BASE_ROUTE} element={<Layout />}>
@@ -37,7 +40,7 @@ const RouterConfig: React.FC = () => {
             <Route path={ABOUT_ROUTE} element={errorWrap(<About />)} />
             <Route path={HEALTH_ROUTE} element={errorWrap(<Health />)} />
             <Route path={SEARCH_ROUTE} element={<Search />} />
-            <Route path={`${SEARCH_ROUTE}/:searchTerm`} element={<Search />} />
+            <Route path={`${SEARCH_ROUTE}/:searchTerm?`} element={<Search />} />
             <Route
               path={`${SEARCH_ROUTE}/:type/:idMeal`}
               element={<SinglePageItem />}
@@ -55,6 +58,7 @@ const RouterConfig: React.FC = () => {
           </Route>
         </Routes>
       </Suspense>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 };

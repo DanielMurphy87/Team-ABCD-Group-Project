@@ -1,7 +1,7 @@
 import SearchFlexContainer, {
   SearchItem,
 } from './components/SearchFlexContainer';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useQueries } from 'react-query';
 import './search.scss';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
@@ -13,9 +13,12 @@ import Loading from '@/components/errors/Loading';
 type showResultType = 'food' | 'drink';
 
 const Search = () => {
+  const params = useParams();
   const [showResult, setShowResult] = useState<showResultType>('food');
   const location = useLocation();
-  let searchTerm: string = location.pathname.split('/')[2]?.substring(1) || ' ';
+  const searchTerm: string = (params.searchTerm) ? params.searchTerm.substring(1) : '';
+
+  console.log("Search Term: "+searchTerm);
 
   const result = useQueries([
     {

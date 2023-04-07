@@ -5,9 +5,13 @@ interface ebcProps {
   component: React.ReactNode;
 }
 
-const FallbackRender = ({ error }: FallbackProps) => (
-  <ErrorComponent message={error?.message} />
-);
+export const FallbackRender = ({ resetErrorBoundary, error }: FallbackProps) => {
+
+  resetErrorBoundary();
+
+  return (<ErrorComponent message={error?.message} />);
+  
+};
 
 const ErrorBoundedComponent: React.FC<ebcProps> = ({ component }) => {
   return (

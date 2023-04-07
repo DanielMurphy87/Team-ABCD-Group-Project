@@ -3,7 +3,7 @@ import Loading from '@/components/errors/Loading';
 import Share from '@/components/ShareMenu/Share';
 import { FOOD_API_BASE_URL, DRINKS_API_BASE_URL } from '@/config/config';
 import { useQuery } from 'react-query';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import './singlePageItem.scss';
 
@@ -11,8 +11,12 @@ type Props = {};
 
 const SinglePageItem = (props: Props) => {
   const location = useLocation();
-  let itemId: string = location.pathname.split('/')[3]?.substring(1) || ' ';
-  let type: string = location.pathname.split('/')[2]?.substring(1) || ' ';
+  const params = useParams();
+  const itemId: string = (params.idMeal) ? params.idMeal.substring(1) : '';
+  const type: string = (params.type) ? params.type.substring(1) : '';
+
+  console.log("Single Item Query: "+type+'/'+itemId);
+
   const baseUrl = type === 'food' ? FOOD_API_BASE_URL : DRINKS_API_BASE_URL;
   const { data, isLoading, error } = useQuery({
     queryKey: ['searchWithId', itemId],
